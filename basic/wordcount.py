@@ -65,10 +65,14 @@ def print_words(filename) :
     return 0
 
 def print_top(filename) :
+
+    def get_count(word_count) :
+        return word_count[1]
+
     liste = utility(filename)
-    order = sorted(liste.keys(), key = liste.items())
+    order = sorted(liste.items(), key = get_count, reverse=True)
     for word in order[:20] :
-        print(word, liste[word])
+        print(word[0], word[1])
     return 0
 
 
