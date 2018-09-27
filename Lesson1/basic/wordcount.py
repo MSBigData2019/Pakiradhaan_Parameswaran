@@ -47,14 +47,14 @@ import sys
 
 def utility(filename) :
     list = {}
-    input = open(filename, 'r')
-    for line in input :
-        words = line.split(" ")
-        for word in words :
-            if word not in list :
-                list[word] = 1
-            else :
-                list[word] +=1
+    file = open(filename, "r")
+    text = file.read()
+    words = text.split()
+    for word in words :
+        if word.lower() not in list :
+            list[word.lower()] = 1
+        else :
+            list[word.lower()] +=1
     return list
 
 def print_words(filename) :
