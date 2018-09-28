@@ -21,7 +21,8 @@ def array_front9(nums):
 # the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
 def last2(string):
     pattern = string[-2:]
-    return string.count(pattern) - 1
+    string_new = string[:-2]
+    return string_new.count(pattern)
 
 #Write a proramm that returna dictionary of occurences of the alphabet for a given string.
 # Test it with the Lorem upsuj
@@ -52,8 +53,9 @@ def number2digits(number):
 #English is translated to Pig Latin by taking the first letter of every word,
 #moving it to the end of the word and adding 'ay'
 def pigLatin(text):
-    new_text = ""
-    for word in list(text) :
+    words = text.split()
+    new_text = words[0][1:] + words[0][:1] + "ay"
+    for word in words[1:] :
         new_text = new_text + " " + word[1:] + word[:1] + "ay"
     return new_text
 
@@ -98,7 +100,12 @@ response = {
 
 #Given the above response object extract a array of records with columns nombre_de_reservations , auteur and timestamp
 def flatten():
-    return
+    results = []
+    for record in response['records'] :
+        computed_record = {}
+        computed_record['timestamp'] = record['record_timestamp']
+        results.append(computed_record)
+    return results
 
 
 
